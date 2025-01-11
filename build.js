@@ -12,14 +12,14 @@ const rootTemplate = baseTemplate
     .replace('href="about.html"', 'href="public/about.html"')
     .replace('href="faq.html"', 'href="public/faq.html"');
 
-// Create blog post template (needs to go up two levels for assets)
+// Create blog post template with absolute paths for GitHub Pages
 const blogPostTemplate = baseTemplate
-    .replace('href="../assets/css/style.css"', 'href="../../assets/css/style.css"')
-    .replace('src="../assets/js/main.js"', 'src="../../assets/js/main.js"')
-    .replace(/href="\.\.\/index\.html"/g, 'href="../../index.html"')
-    .replace('href="blog.html"', 'href="../blog.html"')
-    .replace('href="about.html"', 'href="../about.html"')
-    .replace('href="faq.html"', 'href="../faq.html"');
+    .replace('href="../assets/css/style.css"', 'href="/BYOA-blog/assets/css/style.css"')
+    .replace('src="../assets/js/main.js"', 'src="/BYOA-blog/assets/js/main.js"')
+    .replace(/href="\.\.\/index\.html"/g, 'href="/BYOA-blog/index.html"')
+    .replace('href="blog.html"', 'href="/BYOA-blog/public/blog.html"')
+    .replace('href="about.html"', 'href="/BYOA-blog/public/about.html"')
+    .replace('href="faq.html"', 'href="/BYOA-blog/public/faq.html"');
 
 // Build pages
 const pagesDir = './content/pages';
