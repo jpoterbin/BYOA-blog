@@ -12,6 +12,15 @@ const rootTemplate = baseTemplate
     .replace('href="about.html"', 'href="public/about.html"')
     .replace('href="faq.html"', 'href="public/faq.html"');
 
+// Create blog post template (needs to go up two levels for assets)
+const blogPostTemplate = baseTemplate
+    .replace('href="../assets/css/style.css"', 'href="../../assets/css/style.css"')
+    .replace('src="../assets/js/main.js"', 'src="../../assets/js/main.js"')
+    .replace(/href="\.\.\/index\.html"/g, 'href="../../index.html"')
+    .replace('href="blog.html"', 'href="../blog.html"')
+    .replace('href="about.html"', 'href="../about.html"')
+    .replace('href="faq.html"', 'href="../faq.html"');
+
 // Build pages
 const pagesDir = './content/pages';
 const publicDir = './public';
@@ -27,7 +36,7 @@ if (!fs.existsSync(blogOutputDir)) {
 }
 
 // Process markdown files
-function processMarkdown(filePath, isRoot = false) {
+function processMarkdown(filePath, template) {
     const content = fs.readFileSync(filePath, 'utf-8');
     const parts = content.split('---\n').filter(Boolean);
     
@@ -42,9 +51,6 @@ function processMarkdown(filePath, isRoot = false) {
     // Convert markdown to HTML
     const htmlContent = marked.parse(markdownContent);
     
-    // Use appropriate template
-    const template = isRoot ? rootTemplate : baseTemplate;
-    
     // Insert into template
     return template
         .replace('{{title}}', title)
@@ -54,7 +60,7 @@ function processMarkdown(filePath, isRoot = false) {
 // Build blog posts
 fs.readdirSync(blogDir).forEach(file => {
     if (file.endsWith('.md')) {
-        const html = processMarkdown(path.join(blogDir, file));
+        const html = processMarkdown(path.join(blogDir, file), blogPostTemplate);
         const outputPath = path.join(blogOutputDir, file.replace('.md', '.html'));
         fs.writeFileSync(outputPath, html);
     }
@@ -64,7 +70,8 @@ fs.readdirSync(blogDir).forEach(file => {
 fs.readdirSync(pagesDir).forEach(file => {
     if (file.endsWith('.md')) {
         const isRoot = file === 'index.md';
-        const html = processMarkdown(path.join(pagesDir, file), isRoot);
+        const template = isRoot ? rootTemplate : baseTemplate;
+        const html = processMarkdown(path.join(pagesDir, file), template);
         let outputPath;
         
         if (isRoot) {
