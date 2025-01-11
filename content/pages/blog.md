@@ -6,4 +6,4 @@ title: Blog Posts
 
 Here are my latest blog posts:
 
-- [Hello World - My First Blog Post](/BYOA-blog/public/blog/hello-world.html) - January 1, 2024
+- [Hello World - My First Blog Post](../public/blog/hello-world.html) - January 1, 2024
