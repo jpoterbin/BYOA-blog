@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 const port = 3000;
 
-// Serve static files from the public directory
+// Serve static files from both root and public directory
+app.use(express.static('.'));
 app.use(express.static('public'));
 
 // Handle routes that don't end in .html

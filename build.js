@@ -57,7 +57,8 @@ fs.readdirSync(pagesDir).forEach(file => {
         let outputPath;
         
         if (file === 'index.md') {
-            outputPath = path.join(publicDir, 'index.html');
+            // Place index.html at root level
+            outputPath = './index.html';
         } else {
             outputPath = path.join(publicDir, file.replace('.md', '.html'));
         }
