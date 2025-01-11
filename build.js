@@ -34,7 +34,7 @@ function processMarkdown(filePath) {
 
 // Build pages
 fs.readdirSync(pagesDir).forEach(file => {
-    if (file.endsWith('.md')) {
+    if (file.endsWith('.md') && file !== 'index.md') {
         const html = processMarkdown(path.join(pagesDir, file));
         const outputPath = path.join(publicDir, file.replace('.md', '.html'));
         fs.writeFileSync(outputPath, html);

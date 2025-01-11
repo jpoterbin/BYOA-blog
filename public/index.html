@@ -3,33 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Untitled</title>
+    <title>Welcome to My Site</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
 <body>
-    <nav>
-        <a href="/">Home</a>
-        <a href="/blog">Blog</a>
-        <a href="/about">About</a>
-        <a href="/faq">FAQ</a>
+    <nav class="navbar">
+        <div class="container">
+            <a href="/" class="navbar-brand">Your Site</a>
+            <div class="nav-links">
+                <a href="/" class="nav-link">Home</a>
+                <a href="/blog" class="nav-link">Blog</a>
+                <a href="/about" class="nav-link">About</a>
+                <a href="/faq" class="nav-link">FAQ</a>
+            </div>
+        </div>
     </nav>
     
-    <main>
-        <h2 id="title-welcome-to-my-site">title: Welcome to My Site</h2>
-<h1 id="welcome">Welcome</h1>
-<p>Welcome to my website! This is a simple static site built with markdown support.</p>
-<h2 id="latest-posts">Latest Posts</h2>
-<p>Check out my <a href="/blog">blog</a> for the latest updates.</p>
-<h2 id="quick-links">Quick Links</h2>
-<ul>
-<li><a href="/about">About Me</a> - Learn more about who I am</li>
-<li><a href="/faq">FAQ</a> - Common questions answered</li>
-</ul>
-
+    <main class="container">
+        <h1>Welcome</h1>
+        <p>Welcome to my static website! This is a simple static site built with markdown support.</p>
+        <h2>Latest Posts</h2>
+        <p>Check out my <a href="/blog">blog</a> for the latest updates.</p>
+        <h2>Quick Links</h2>
+        <ul>
+            <li><a href="/about">About Me</a> - Learn more about who I am</li>
+            <li><a href="/faq">FAQ</a> - Common questions answered</li>
+        </ul>
     </main>
 
-    <footer>
-        <p>&copy; 2024 - Your Site</p>
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 - Your Site</p>
+        </div>
     </footer>
     
     <script src="/js/main.js"></script>
