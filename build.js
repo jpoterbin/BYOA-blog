@@ -8,23 +8,32 @@ const template = fs.readFileSync('./templates/base.html', 'utf-8');
 // Build pages
 const pagesDir = './content/pages';
 const publicDir = './public';
+const blogDir = './content/blog';
+const blogOutputDir = path.join(publicDir, 'blog');
 
-// Ensure public directory exists
+// Ensure directories exist
 if (!fs.existsSync(publicDir)) {
     fs.mkdirSync(publicDir);
+}
+if (!fs.existsSync(blogOutputDir)) {
+    fs.mkdirSync(blogOutputDir, { recursive: true });
 }
 
 // Process markdown files
 function processMarkdown(filePath) {
     const content = fs.readFileSync(filePath, 'utf-8');
-    const [frontMatter, ...markdownContent] = content.split('---\n');
+    const parts = content.split('---\n').filter(Boolean);
     
     // Parse front matter
+    const frontMatter = parts[0];
+    const markdownContent = parts[1] || '';
+    
+    // Extract title from front matter
     const titleMatch = frontMatter.match(/title:\s*(.+)/);
-    const title = titleMatch ? titleMatch[1] : 'Untitled';
+    const title = titleMatch ? titleMatch[1].trim() : 'Untitled';
     
     // Convert markdown to HTML
-    const htmlContent = marked.parse(markdownContent.join('---\n'));
+    const htmlContent = marked.parse(markdownContent);
     
     // Insert into template
     return template
@@ -32,17 +41,51 @@ function processMarkdown(filePath) {
         .replace('{{content}}', htmlContent);
 }
 
-// Build pages
-fs.readdirSync(pagesDir).forEach(file => {
-    if (file.endsWith('.md') && file !== 'index.md') {
-        const html = processMarkdown(path.join(pagesDir, file));
-        const outputPath = path.join(publicDir, file.replace('.md', '.html'));
+// Build blog posts
+fs.readdirSync(blogDir).forEach(file => {
+    if (file.endsWith('.md')) {
+        const html = processMarkdown(path.join(blogDir, file));
+        const outputPath = path.join(blogOutputDir, file.replace('.md', '.html'));
         fs.writeFileSync(outputPath, html);
     }
 });
 
-// Copy static assets
-fs.cpSync('./public/css', path.join(publicDir, 'css'), { recursive: true });
-fs.cpSync('./public/js', path.join(publicDir, 'js'), { recursive: true });
+// Build pages (including index and blog pages)
+fs.readdirSync(pagesDir).forEach(file => {
+    if (file.endsWith('.md')) {
+        const html = processMarkdown(path.join(pagesDir, file));
+        let outputPath;
+        
+        if (file === 'index.md') {
+            outputPath = path.join(publicDir, 'index.html');
+        } else {
+            outputPath = path.join(publicDir, file.replace('.md', '.html'));
+        }
+        
+        fs.writeFileSync(outputPath, html);
+    }
+});
 
-console.log('Build complete!'); 
+// Ensure asset directories exist
+const cssDir = path.join(publicDir, 'css');
+const jsDir = path.join(publicDir, 'js');
+
+if (!fs.existsSync(cssDir)) {
+    fs.mkdirSync(cssDir, { recursive: true });
+}
+if (!fs.existsSync(jsDir)) {
+    fs.mkdirSync(jsDir, { recursive: true });
+}
+
+// Create empty CSS and JS files if they don't exist
+const cssFile = path.join(cssDir, 'style.css');
+const jsFile = path.join(jsDir, 'main.js');
+
+if (!fs.existsSync(cssFile)) {
+    fs.writeFileSync(cssFile, '/* Add your styles here */\n');
+}
+if (!fs.existsSync(jsFile)) {
+    fs.writeFileSync(jsFile, '// Add your JavaScript here\n');
+}
+
+console.log('Build complete!');
