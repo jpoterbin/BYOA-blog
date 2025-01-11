@@ -2,8 +2,15 @@ const fs = require('fs');
 const path = require('path');
 const marked = require('marked');
 
-// Read template
-const template = fs.readFileSync('./templates/base.html', 'utf-8');
+// Read templates
+const baseTemplate = fs.readFileSync('./templates/base.html', 'utf-8');
+const rootTemplate = baseTemplate
+    .replace('href="../assets/css/style.css"', 'href="assets/css/style.css"')
+    .replace('src="../assets/js/main.js"', 'src="assets/js/main.js"')
+    .replace(/href="\.\.\/index\.html"/g, 'href="index.html"')
+    .replace('href="blog.html"', 'href="public/blog.html"')
+    .replace('href="about.html"', 'href="public/about.html"')
+    .replace('href="faq.html"', 'href="public/faq.html"');
 
 // Build pages
 const pagesDir = './content/pages';
@@ -20,7 +27,7 @@ if (!fs.existsSync(blogOutputDir)) {
 }
 
 // Process markdown files
-function processMarkdown(filePath) {
+function processMarkdown(filePath, isRoot = false) {
     const content = fs.readFileSync(filePath, 'utf-8');
     const parts = content.split('---\n').filter(Boolean);
     
@@ -34,6 +41,9 @@ function processMarkdown(filePath) {
     
     // Convert markdown to HTML
     const htmlContent = marked.parse(markdownContent);
+    
+    // Use appropriate template
+    const template = isRoot ? rootTemplate : baseTemplate;
     
     // Insert into template
     return template
@@ -50,14 +60,14 @@ fs.readdirSync(blogDir).forEach(file => {
     }
 });
 
-// Build pages (including index and blog pages)
+// Build pages
 fs.readdirSync(pagesDir).forEach(file => {
     if (file.endsWith('.md')) {
-        const html = processMarkdown(path.join(pagesDir, file));
+        const isRoot = file === 'index.md';
+        const html = processMarkdown(path.join(pagesDir, file), isRoot);
         let outputPath;
         
-        if (file === 'index.md') {
-            // Place index.html at root level
+        if (isRoot) {
             outputPath = './index.html';
         } else {
             outputPath = path.join(publicDir, file.replace('.md', '.html'));
@@ -68,8 +78,8 @@ fs.readdirSync(pagesDir).forEach(file => {
 });
 
 // Ensure asset directories exist
-const cssDir = path.join(publicDir, 'css');
-const jsDir = path.join(publicDir, 'js');
+const cssDir = path.join('assets', 'css');
+const jsDir = path.join('assets', 'js');
 
 if (!fs.existsSync(cssDir)) {
     fs.mkdirSync(cssDir, { recursive: true });
