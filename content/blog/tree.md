@@ -4,6 +4,10 @@ date: 2024-01-11
 image: /assets/images/blog/tree.jpg
 ---
 
+# Live Your Best Life: Think Like a Tree
+
+<img src="/assets/images/blog/tree.jpg" alt="Think Like a Tree" class="blog-image">
+
 This post was originally posted on Jan. 1, 2018, on Medium.
 
 This past year has been monumental for me — many big life goals are coming to fruition which inevitably has me thinking about the next 5, 10, 20-plus years.
