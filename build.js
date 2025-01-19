@@ -80,13 +80,19 @@ function getExcerpt(content, length = 200) {
 }
 
 // Read templates
-const baseTemplate = fs.readFileSync('./templates/base.html', 'utf-8');
-const rootTemplate = fs.readFileSync('./templates/root.html', 'utf-8');
+const baseTemplate = fs.readFileSync('./templates/base.html', 'utf-8')
+    .replace(/href="assets\//g, 'href="./assets/')
+    .replace(/src="assets\//g, 'src="./assets/');
+
+const rootTemplate = fs.readFileSync('./templates/root.html', 'utf-8')
+    .replace(/href="assets\//g, 'href="./assets/')
+    .replace(/src="assets\//g, 'src="./assets/');
 
 // Create blog template with proper relative paths
 const blogTemplate = baseTemplate
-    .replace(/href="assets\//g, 'href="../assets/')
-    .replace(/src="assets\//g, 'src="../assets/');
+    .replace(/href="\.\//g, 'href="../')
+    .replace(/href="\.\/assets\//g, 'href="../assets/')
+    .replace(/src="\.\/assets\//g, 'src="../assets/');
 
 // Process markdown files
 function processMarkdown(filePath, template, content = null) {
@@ -160,8 +166,8 @@ function getBlogPosts() {
                 title,
                 date,
                 excerpt: getExcerpt(markdownContent),
-                file: `blog/${file.replace('.md', '.html')}`,
-                image: `assets/images/blog/${file.replace('.md', '.jpg')}`
+                file: `./blog/${file.replace('.md', '.html')}`,
+                image: `./assets/images/blog/${file.replace('.md', '.jpg')}`
             });
         }
     });
@@ -174,10 +180,6 @@ fs.readdirSync(pagesDir).forEach(file => {
     if (file.endsWith('.md')) {
         const isRoot = file === 'index.md';
         const template = isRoot ? rootTemplate : baseTemplate;
-        
-        // List of main pages that should be in root directory
-        const mainPages = ['about.md', 'blog.md', 'projects.md', 'resume.md'];
-        const isMainPage = mainPages.includes(file);
         
         if (file === 'blog.md') {
             // Generate blog index page with list of posts
@@ -211,9 +213,7 @@ fs.readdirSync(pagesDir).forEach(file => {
             fs.writeFileSync(outputPath, html);
         } else {
             const { html } = processMarkdown(path.join(pagesDir, file), template);
-            const outputPath = isRoot || isMainPage ? 
-                             path.join(publicDir, file.replace('.md', '.html')) : 
-                             path.join(publicDir, file.replace('.md', '.html'));
+            const outputPath = path.join(publicDir, file.replace('.md', '.html'));
             fs.writeFileSync(outputPath, html);
         }
     }
