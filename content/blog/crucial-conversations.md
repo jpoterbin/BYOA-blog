@@ -4,7 +4,7 @@ date: 2024-01-01
 image: /assets/images/blog/crucial-conversations.png
 ---
 
-<img src="/assets/images/blog/tree.jpg" alt="Think Like a Tree" class="blog-image">
+<img src="/assets/images/blog/crucial-conversations.png" alt="Think Like a Tree" class="blog-image">
 
 # Book Notes - Crucial Conversations: Tools for Talking When Stakes Are High
 
