@@ -156,12 +156,18 @@ function getBlogPosts() {
             const content = fs.readFileSync(filePath, 'utf-8');
             const { title, date, content: markdownContent } = processMarkdown(filePath, '');
             
+            // Check if .png exists, otherwise use .jpg
+            const baseName = file.replace('.md', '');
+            const pngPath = path.join('assets', 'images', 'blog', `${baseName}.png`);
+            const jpgPath = path.join('assets', 'images', 'blog', `${baseName}.jpg`);
+            const imagePath = fs.existsSync(path.join(publicDir, pngPath)) ? pngPath : jpgPath;
+            
             posts.push({
                 title,
                 date,
                 excerpt: getExcerpt(markdownContent),
                 file: `/blog/${file.replace('.md', '.html')}`,
-                image: `/assets/images/blog/${file.replace('.md', '.jpg')}`
+                image: `/${imagePath}`
             });
         }
     });
@@ -176,12 +182,34 @@ fs.readdirSync(pagesDir).forEach(file => {
         const template = isRoot ? rootTemplate : baseTemplate;
         
         if (file === 'blog.md') {
-            // Read the blog.md content directly
-            const blogMdContent = fs.readFileSync(path.join(pagesDir, file), 'utf-8');
-            const { html } = processMarkdown(path.join(pagesDir, file), template, blogMdContent);
-            
-            // Write the processed HTML directly to blog.html
+            // Generate blog index page with list of posts
+            const posts = getBlogPosts();
+            const blogContent = `<div class="hero">
+    <div class="hero-content">
+        <h1>Blog</h1>
+        <p>Thoughts on product, design, and life.</p>
+    </div>
+</div>
+
+<div class="content-section blog-content">
+    <div class="blog-grid">
+        ${posts.map(post => `
+        <article class="blog-preview">
+            <img src="${post.image}" alt="${post.title}" class="blog-preview-image">
+            <div class="blog-preview-content">
+                <h2><a href="${post.file}">${post.title}</a></h2>
+                <time class="blog-date">${post.date}</time>
+                <p class="blog-excerpt">${post.excerpt}</p>
+                <a href="${post.file}" class="read-more">Read More →</a>
+            </div>
+        </article>`).join('')}
+    </div>
+</div>`;
+
             const outputPath = path.join(publicDir, 'blog.html');
+            const html = template
+                .replace('{{title}}', 'Blog')
+                .replace('{{content}}', blogContent);
             fs.writeFileSync(outputPath, html);
         } else {
             const { html } = processMarkdown(path.join(pagesDir, file), template);
