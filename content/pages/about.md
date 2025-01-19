@@ -3,10 +3,10 @@ title: About Me
 ---
 
 <div class="hero">
-    <img src="/BYOA-blog/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
+    <img src="/assets/images/profile.png" alt="Jacob Poterbin" class="profile-image">
     <div class="hero-content">
         <h1>About Me</h1>
-        <p>Product Maker</p>
+        <p>Product leader and software engineer based in Austin, TX</p>
     </div>
 </div>
 
