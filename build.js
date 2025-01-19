@@ -83,6 +83,11 @@ function getExcerpt(content, length = 200) {
 const baseTemplate = fs.readFileSync('./templates/base.html', 'utf-8');
 const rootTemplate = fs.readFileSync('./templates/root.html', 'utf-8');
 
+// Create blog template with proper relative paths
+const blogTemplate = baseTemplate
+    .replace(/href="assets\//g, 'href="../assets/')
+    .replace(/src="assets\//g, 'src="../assets/');
+
 // Process markdown files
 function processMarkdown(filePath, template, content = null) {
     const fileContent = content || fs.readFileSync(filePath, 'utf-8');
@@ -133,6 +138,15 @@ function processMarkdown(filePath, template, content = null) {
     };
 }
 
+// Build blog posts
+fs.readdirSync(blogDir).forEach(file => {
+    if (file.endsWith('.md')) {
+        const { html } = processMarkdown(path.join(blogDir, file), blogTemplate);
+        const outputPath = path.join(blogOutputDir, file.replace('.md', '.html'));
+        fs.writeFileSync(outputPath, html);
+    }
+});
+
 // Get all blog posts
 function getBlogPosts() {
     const posts = [];
@@ -146,7 +160,7 @@ function getBlogPosts() {
                 title,
                 date,
                 excerpt: getExcerpt(markdownContent),
-                file: file.replace('.md', '.html'),
+                file: `blog/${file.replace('.md', '.html')}`,
                 image: `assets/images/blog/${file.replace('.md', '.jpg')}`
             });
         }
@@ -154,15 +168,6 @@ function getBlogPosts() {
     
     return posts.sort((a, b) => new Date(b.date) - new Date(a.date));
 }
-
-// Build blog posts
-fs.readdirSync(blogDir).forEach(file => {
-    if (file.endsWith('.md')) {
-        const { html } = processMarkdown(path.join(blogDir, file), baseTemplate);
-        const outputPath = path.join(blogOutputDir, file.replace('.md', '.html'));
-        fs.writeFileSync(outputPath, html);
-    }
-});
 
 // Build pages
 fs.readdirSync(pagesDir).forEach(file => {
