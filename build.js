@@ -40,17 +40,16 @@ function copyDir(src, dest) {
     }
 }
 
-// Ensure directories exist and copy assets
-if (!fs.existsSync(publicDir)) {
-    fs.mkdirSync(publicDir);
+// Clean and create directories
+if (fs.existsSync(publicDir)) {
+    fs.rmSync(publicDir, { recursive: true });
 }
-if (!fs.existsSync(blogOutputDir)) {
-    fs.mkdirSync(blogOutputDir, { recursive: true });
-}
+fs.mkdirSync(publicDir);
+fs.mkdirSync(blogOutputDir, { recursive: true });
 
 // Copy assets to public directory
 if (fs.existsSync('./assets')) {
-    copyDir('./assets', path.join('.', 'assets'));
+    copyDir('./assets', path.join(publicDir, 'assets'));
 }
 
 // Create a .nojekyll file to prevent GitHub Pages from ignoring files that start with underscores
@@ -81,13 +80,16 @@ function getExcerpt(content, length = 200) {
 }
 
 // Read templates
-const baseTemplate = fs.readFileSync('./templates/base.html', 'utf-8');
+const baseTemplate = fs.readFileSync('./templates/base.html', 'utf-8')
+    .replace(/href="assets\//g, 'href="../assets/')
+    .replace(/src="assets\//g, 'src="../assets/');
+
 const rootTemplate = fs.readFileSync('./templates/root.html', 'utf-8');
 
 // Create blog post template with proper paths
 const blogPostTemplate = baseTemplate
-    .replace('href="/assets/css/style.css"', 'href="../../assets/css/style.css"')
-    .replace('src="/assets/js/main.js"', 'href="../../assets/js/main.js"');
+    .replace(/href="\.\.\/assets\//g, 'href="../../assets/')
+    .replace(/src="\.\.\/assets\//g, 'src="../../assets/');
 
 // Process markdown files
 function processMarkdown(filePath, template, content = null) {
@@ -153,7 +155,7 @@ function getBlogPosts() {
                 date,
                 excerpt: getExcerpt(markdownContent),
                 file: file.replace('.md', '.html'),
-                image: `/assets/images/blog/${file.replace('.md', '.jpg')}`
+                image: `../assets/images/blog/${file.replace('.md', '.jpg')}`
             });
         }
     });
@@ -196,16 +198,16 @@ fs.readdirSync(pagesDir).forEach(file => {
         <article class="blog-preview">
             <img src="${post.image}" alt="${post.title}" class="blog-preview-image">
             <div class="blog-preview-content">
-                <h2><a href="/blog/${post.file}">${post.title}</a></h2>
+                <h2><a href="blog/${post.file}">${post.title}</a></h2>
                 <time class="blog-date">${post.date}</time>
                 <p class="blog-excerpt">${post.excerpt}</p>
-                <a href="/blog/${post.file}" class="read-more">Read More →</a>
+                <a href="blog/${post.file}" class="read-more">Read More →</a>
             </div>
         </article>`).join('')}
     </div>
 </div>`;
 
-            const outputPath = './blog.html';
+            const outputPath = path.join(publicDir, 'blog.html');
             const html = template
                 .replace('{{title}}', 'Blog')
                 .replace('{{content}}', blogContent);
@@ -213,7 +215,7 @@ fs.readdirSync(pagesDir).forEach(file => {
         } else {
             const { html } = processMarkdown(path.join(pagesDir, file), template);
             const outputPath = isRoot || isMainPage ? 
-                             `./${file.replace('.md', '.html')}` : 
+                             path.join(publicDir, 'index.html') : 
                              path.join(publicDir, file.replace('.md', '.html'));
             fs.writeFileSync(outputPath, html);
         }
