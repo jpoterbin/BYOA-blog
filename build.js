@@ -46,24 +46,12 @@ function getExcerpt(content, length = 200) {
 
 // Read templates
 const baseTemplate = fs.readFileSync('./templates/base.html', 'utf-8');
-const rootTemplate = baseTemplate
-    .replace('href="../assets/css/style.css"', 'href="assets/css/style.css"')
-    .replace('src="../assets/js/main.js"', 'src="assets/js/main.js"')
-    .replace(/href="\.\.\/index\.html"/g, 'href="index.html"')
-    .replace('href="blog.html"', 'href="public/blog.html"')
-    .replace('href="about.html"', 'href="public/about.html"')
-    .replace('href="faq.html"', 'href="public/faq.html"');
+const rootTemplate = fs.readFileSync('./templates/root.html', 'utf-8');
 
 // Create blog post template with proper paths
 const blogPostTemplate = baseTemplate
-    .replace('href="../assets/css/style.css"', 'href="../../assets/css/style.css"')
-    .replace('src="../assets/js/main.js"', 'src="../../assets/js/main.js"')
-    .replace('href="../index.html"', 'href="../../index.html"')
-    .replace('href="about.html"', 'href="../about.html"')
-    .replace('href="resume.html"', 'href="../resume.html"')
-    .replace('href="projects.html"', 'href="../projects.html"')
-    .replace('href="blog.html"', 'href="../blog.html"')
-    .replace('href="faq.html"', 'href="../faq.html"');
+    .replace('href="/assets/css/style.css"', 'href="../../assets/css/style.css"')
+    .replace('src="/assets/js/main.js"', 'href="../../assets/js/main.js"');
 
 // Ensure directories exist
 if (!fs.existsSync(publicDir)) {
@@ -99,32 +87,19 @@ function processMarkdown(filePath, template, content = null) {
             }
         }
     }
+
+    // Handle hero section separately
+    let heroSection = '';
+    let mainContent = markdownContent;
     
-    // Configure marked for this specific content
-    marked.setOptions({
-        gfm: true,
-        breaks: true,
-        pedantic: false,
-        smartLists: true,
-        smartypants: true,
-        headerIds: false,
-        mangle: false,
-        html: true,
-        xhtml: true
-    });
+    if (markdownContent.includes('<div class="hero">')) {
+        const parts = markdownContent.split('</div>\n\n');
+        heroSection = parts[0] + '</div>';
+        mainContent = parts.slice(1).join('</div>\n\n');
+    }
     
-    // Split content into sections based on h2 headers
-    const sections = markdownContent.split(/(?=##\s)/);
-    
-    // Process each section
-    const processedSections = sections.map(section => {
-        if (section.startsWith('<div class="hero">')) {
-            return section;
-        }
-        return `<div class="content-section">\n${marked.parse(section.trim())}\n</div>`;
-    });
-    
-    const htmlContent = processedSections.join('\n');
+    // Process the main content
+    const htmlContent = heroSection + '\n<div class="content-section">\n' + marked.parse(mainContent) + '\n</div>';
     
     return {
         title,
@@ -150,7 +125,7 @@ function getBlogPosts() {
                 date,
                 excerpt: getExcerpt(markdownContent),
                 file: file.replace('.md', '.html'),
-                image: `../assets/images/blog/${file.replace('.md', '.jpg')}`
+                image: `/assets/images/blog/${file.replace('.md', '.jpg')}`
             });
         }
     });
@@ -173,6 +148,10 @@ fs.readdirSync(pagesDir).forEach(file => {
         const isRoot = file === 'index.md';
         const template = isRoot ? rootTemplate : baseTemplate;
         
+        // List of main pages that should be in root directory
+        const mainPages = ['about.md', 'blog.md', 'projects.md', 'resume.md'];
+        const isMainPage = mainPages.includes(file);
+        
         if (file === 'blog.md') {
             // Generate blog index page with list of posts
             const posts = getBlogPosts();
@@ -189,52 +168,28 @@ fs.readdirSync(pagesDir).forEach(file => {
         <article class="blog-preview">
             <img src="${post.image}" alt="${post.title}" class="blog-preview-image">
             <div class="blog-preview-content">
-                <h2><a href="blog/${post.file}">${post.title}</a></h2>
+                <h2><a href="/blog/${post.file}">${post.title}</a></h2>
                 <time class="blog-date">${post.date}</time>
                 <p class="blog-excerpt">${post.excerpt}</p>
-                <a href="blog/${post.file}" class="read-more">Read More →</a>
+                <a href="/blog/${post.file}" class="read-more">Read More →</a>
             </div>
         </article>`).join('')}
     </div>
 </div>`;
 
-            const outputPath = path.join(publicDir, 'blog.html');
+            const outputPath = './blog.html';
             const html = template
                 .replace('{{title}}', 'Blog')
                 .replace('{{content}}', blogContent);
             fs.writeFileSync(outputPath, html);
         } else {
             const { html } = processMarkdown(path.join(pagesDir, file), template);
-            const outputPath = isRoot ? './index.html' : path.join(publicDir, file.replace('.md', '.html'));
+            const outputPath = isRoot || isMainPage ? 
+                             `./${file.replace('.md', '.html')}` : 
+                             path.join(publicDir, file.replace('.md', '.html'));
             fs.writeFileSync(outputPath, html);
         }
     }
 });
-
-// Ensure asset directories exist
-const cssDir = path.join('assets', 'css');
-const jsDir = path.join('assets', 'js');
-const blogImagesDir = path.join('assets', 'images', 'blog');
-
-if (!fs.existsSync(cssDir)) {
-    fs.mkdirSync(cssDir, { recursive: true });
-}
-if (!fs.existsSync(jsDir)) {
-    fs.mkdirSync(jsDir, { recursive: true });
-}
-if (!fs.existsSync(blogImagesDir)) {
-    fs.mkdirSync(blogImagesDir, { recursive: true });
-}
-
-// Create empty CSS and JS files if they don't exist
-const cssFile = path.join(cssDir, 'style.css');
-const jsFile = path.join(jsDir, 'main.js');
-
-if (!fs.existsSync(cssFile)) {
-    fs.writeFileSync(cssFile, '/* Add your styles here */\n');
-}
-if (!fs.existsSync(jsFile)) {
-    fs.writeFileSync(jsFile, '// Add your JavaScript here\n');
-}
 
 console.log('Build complete!');

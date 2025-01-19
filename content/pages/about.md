@@ -3,31 +3,21 @@ title: About Me
 ---
 
 <div class="hero">
-    <img src="../assets/images/profile.png" alt="Jacob Poterbin" class="profile-image">
+    <img src="/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
     <div class="hero-content">
         <h1>About Me</h1>
-        <p>Software Engineer & Product Builder</p>
+        <p>Product Maker</p>
     </div>
 </div>
 
-## Background
+## My Product Journey
 
-I'm a software engineer and product builder based in Austin, Texas. I'm passionate about creating intuitive, user-friendly solutions that solve real problems.
+Growing up in the small town of Tonganoxie, Kansas, I spent my summers helping on my grandparents' farm. These formative experiences taught me the value of hard work, resourcefulness, and problem-solving at a young age. The lessons I learned - from tending to the crops to troubleshooting equipment issues - would prove invaluable as I later discovered a passion for technology and creating digital experiences.
 
-Currently, I'm focused on building and improving RoverPass, making it easier for campground owners and campers to connect and manage their outdoor experiences.
+When my parents brought home our first Windows 95 Compaq computer, I was immediately captivated. Tinkering with that machine sparked a lifelong love for marrying hands-on problem-solving with creative digital expression - from building HTML websites to producing videos. This diverse skillset naturally guided me to the University of Kansas, where I earned a degree in Journalism with a specialization in strategic communication.
 
-## Skills & Expertise
+My product management journey began at an Austin startup, where I wore multiple hats while helping raise $1.9M and shaping the product from the ground up. This experience taught me the importance of adaptability and building products that serve the needs of both the business and its customers. I then brought those lessons to The Home Depot, managing enterprise communications systems that reached millions of users. There, I also played a key role in launching critical initiatives like curbside pickup during the COVID-19 pandemic.
 
-My expertise spans across full-stack development, with a particular focus on:
+As Senior Product Manager at Yonder, I established their first customer discovery program and implemented data-driven methodologies that improved core user experiences by 20%. This focus on customer-centricity and continuous improvement has been a hallmark of my work.
 
-* Product Development
-* Web Applications
-* User Experience Design
-* Team Leadership
-* Technical Architecture
-
-## Get in Touch
-
-I'm always interested in connecting with fellow developers, entrepreneurs, and outdoor enthusiasts. Feel free to reach out through any of the social links below.
-
-You can also check out my [blog](blog.html) to see what I'm currently working on.
+After a brief tenure at Walmart Global Tech leading their eSim iPhone purchasing journey, I joined Amazon's Global Internet Infrastructure Engineering organization. There, I drove voice-of-customer initiatives across 40+ business units as a product manager before advancing to Technical Product Manager, where I now focus on data management challenges for network automation and security applications.

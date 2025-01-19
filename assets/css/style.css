@@ -16,35 +16,58 @@ body {
 
 /* Header and Navigation */
 .top-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1rem 2rem;
-    background-color: #333;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
+    background: #1a1a1a;
     z-index: 1000;
-    height: 64px; /* Fixed height for nav */
 }
 
-.nav-left a {
-    color: #fff;
+.nav-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.nav-title {
+    color: #4A90E2;
     text-decoration: none;
+    font-size: 1.5rem;
     font-weight: bold;
-    font-size: 1.2rem;
 }
 
-.nav-right a {
+.nav-links {
+    display: flex;
+    gap: 2rem;
+    margin-left: auto;
+}
+
+.nav-links a {
     color: #fff;
     text-decoration: none;
-    margin-left: 2rem;
+    font-size: 1rem;
     transition: color 0.3s ease;
 }
 
-.nav-right a:hover {
-    color: #0096ff;
+.nav-links a:hover {
+    color: #4A90E2;
+}
+
+@media (max-width: 768px) {
+    .nav-content {
+        flex-direction: column;
+        padding: 1rem;
+        gap: 1rem;
+    }
+    
+    .nav-links {
+        margin-left: 0;
+        gap: 1rem;
+    }
 }
 
 /* Hero Section */

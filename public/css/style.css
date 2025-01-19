@@ -31,6 +31,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    max-width: 1200px;
 }
 
 .navbar-brand {
@@ -38,11 +39,14 @@ body {
     font-weight: bold;
     text-decoration: none;
     color: #333;
+    margin-right: 2rem;
 }
 
 .nav-links {
     display: flex;
     gap: 1.5rem;
+    margin-left: auto;
+    align-items: center;
 }
 
 .nav-link {
