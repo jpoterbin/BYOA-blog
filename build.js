@@ -53,7 +53,7 @@ if (fs.existsSync('./assets')) {
 }
 
 // Create a .nojekyll file to prevent GitHub Pages from ignoring files that start with underscores
-fs.writeFileSync('./.nojekyll', '');
+fs.writeFileSync(path.join(publicDir, '.nojekyll'), '');
 
 // Get blog post excerpt
 function getExcerpt(content, length = 200) {
@@ -80,16 +80,8 @@ function getExcerpt(content, length = 200) {
 }
 
 // Read templates
-const baseTemplate = fs.readFileSync('./templates/base.html', 'utf-8')
-    .replace(/href="assets\//g, 'href="../assets/')
-    .replace(/src="assets\//g, 'src="../assets/');
-
+const baseTemplate = fs.readFileSync('./templates/base.html', 'utf-8');
 const rootTemplate = fs.readFileSync('./templates/root.html', 'utf-8');
-
-// Create blog post template with proper paths
-const blogPostTemplate = baseTemplate
-    .replace(/href="\.\.\/assets\//g, 'href="../../assets/')
-    .replace(/src="\.\.\/assets\//g, 'src="../../assets/');
 
 // Process markdown files
 function processMarkdown(filePath, template, content = null) {
@@ -155,7 +147,7 @@ function getBlogPosts() {
                 date,
                 excerpt: getExcerpt(markdownContent),
                 file: file.replace('.md', '.html'),
-                image: `../assets/images/blog/${file.replace('.md', '.jpg')}`
+                image: `assets/images/blog/${file.replace('.md', '.jpg')}`
             });
         }
     });
@@ -166,7 +158,7 @@ function getBlogPosts() {
 // Build blog posts
 fs.readdirSync(blogDir).forEach(file => {
     if (file.endsWith('.md')) {
-        const { html } = processMarkdown(path.join(blogDir, file), blogPostTemplate);
+        const { html } = processMarkdown(path.join(blogDir, file), baseTemplate);
         const outputPath = path.join(blogOutputDir, file.replace('.md', '.html'));
         fs.writeFileSync(outputPath, html);
     }
@@ -198,10 +190,10 @@ fs.readdirSync(pagesDir).forEach(file => {
         <article class="blog-preview">
             <img src="${post.image}" alt="${post.title}" class="blog-preview-image">
             <div class="blog-preview-content">
-                <h2><a href="blog/${post.file}">${post.title}</a></h2>
+                <h2><a href="${post.file}">${post.title}</a></h2>
                 <time class="blog-date">${post.date}</time>
                 <p class="blog-excerpt">${post.excerpt}</p>
-                <a href="blog/${post.file}" class="read-more">Read More →</a>
+                <a href="${post.file}" class="read-more">Read More →</a>
             </div>
         </article>`).join('')}
     </div>
@@ -215,7 +207,7 @@ fs.readdirSync(pagesDir).forEach(file => {
         } else {
             const { html } = processMarkdown(path.join(pagesDir, file), template);
             const outputPath = isRoot || isMainPage ? 
-                             path.join(publicDir, 'index.html') : 
+                             path.join(publicDir, file.replace('.md', '.html')) : 
                              path.join(publicDir, file.replace('.md', '.html'));
             fs.writeFileSync(outputPath, html);
         }
