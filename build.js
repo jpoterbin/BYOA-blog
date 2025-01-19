@@ -80,19 +80,8 @@ function getExcerpt(content, length = 200) {
 }
 
 // Read templates
-const baseTemplate = fs.readFileSync('./templates/base.html', 'utf-8')
-    .replace(/href="assets\//g, 'href="./assets/')
-    .replace(/src="assets\//g, 'src="./assets/');
-
-const rootTemplate = fs.readFileSync('./templates/root.html', 'utf-8')
-    .replace(/href="assets\//g, 'href="./assets/')
-    .replace(/src="assets\//g, 'src="./assets/');
-
-// Create blog template with proper relative paths
-const blogTemplate = baseTemplate
-    .replace(/href="\.\//g, 'href="../')
-    .replace(/href="\.\/assets\//g, 'href="../assets/')
-    .replace(/src="\.\/assets\//g, 'src="../assets/');
+const baseTemplate = fs.readFileSync('./templates/base.html', 'utf-8');
+const rootTemplate = fs.readFileSync('./templates/root.html', 'utf-8');
 
 // Process markdown files
 function processMarkdown(filePath, template, content = null) {
@@ -147,7 +136,7 @@ function processMarkdown(filePath, template, content = null) {
 // Build blog posts
 fs.readdirSync(blogDir).forEach(file => {
     if (file.endsWith('.md')) {
-        const { html } = processMarkdown(path.join(blogDir, file), blogTemplate);
+        const { html } = processMarkdown(path.join(blogDir, file), baseTemplate);
         const outputPath = path.join(blogOutputDir, file.replace('.md', '.html'));
         fs.writeFileSync(outputPath, html);
     }
@@ -166,8 +155,8 @@ function getBlogPosts() {
                 title,
                 date,
                 excerpt: getExcerpt(markdownContent),
-                file: `./blog/${file.replace('.md', '.html')}`,
-                image: `./assets/images/blog/${file.replace('.md', '.jpg')}`
+                file: `blog/${file.replace('.md', '.html')}`,
+                image: `assets/images/blog/${file.replace('.md', '.jpg')}`
             });
         }
     });
