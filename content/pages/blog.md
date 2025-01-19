@@ -20,7 +20,6 @@ title: Blog
                 <a href="blog/tree.html" class="read-more">Read More →</a>
             </div>
         </article>
-
         <article class="blog-preview">
             <img src="../assets/images/blog/second-post.jpg" alt="My Second Blog Post" class="blog-preview-image">
             <div class="blog-preview-content">
@@ -30,7 +29,6 @@ title: Blog
                 <a href="blog/01-11-25.html" class="read-more">Read More →</a>
             </div>
         </article>
-
         <article class="blog-preview">
             <img src="../assets/images/blog/first-post.jpg" alt="Hello World - My First Blog Post" class="blog-preview-image">
             <div class="blog-preview-content">
