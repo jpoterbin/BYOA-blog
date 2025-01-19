@@ -3,7 +3,7 @@ title: About Me
 ---
 
 <div class="hero">
-    <img src="/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
+    <img src="/BYOA-blog/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
     <div class="hero-content">
         <h1>About Me</h1>
         <p>Product Maker</p>
@@ -14,7 +14,7 @@ title: About Me
 
 Growing up in the small town of Tonganoxie, Kansas, I spent my summers helping on my grandparents' farm. These formative experiences taught me the value of hard work, resourcefulness, and problem-solving at a young age. The lessons I learned - from tending to the crops to troubleshooting equipment issues - would prove invaluable as I later discovered a passion for technology and creating digital experiences.
 
-When my parents brought home our first Windows 95 Compaq computer, I was immediately captivated. Tinkering with that machine sparked a lifelong love for marrying hands-on problem-solving with creative digital expression - from building HTML websites to producing videos. This diverse skillset naturally guided me to the University of Kansas, where I earned a degree in Journalism with a specialization in strategic communication.
+When my parents brought home our first Windows 95 Compaq computer, I was immediately captivated. Tinkering with that machine sparked a lifelong love for hands-on problem-solving with creative digital expression - from building HTML websites to producing videos. This diverse skillset naturally guided me to the University of Kansas, where I earned a degree in Journalism with a specialization in strategic communication.
 
 My product management journey began at an Austin startup, where I wore multiple hats while helping raise $1.9M and shaping the product from the ground up. This experience taught me the importance of adaptability and building products that serve the needs of both the business and its customers. I then brought those lessons to The Home Depot, managing enterprise communications systems that reached millions of users. There, I also played a key role in launching critical initiatives like curbside pickup during the COVID-19 pandemic.
 
