@@ -5,7 +5,7 @@ title: Blog
 <div class="hero">
     <div class="hero-content">
         <h1>Blog</h1>
-        <p>Thoughts on product, design, and life</p>
+        <p>Thoughts on product, design, and life.</p>
     </div>
 </div>
 
