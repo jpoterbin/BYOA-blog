@@ -83,6 +83,11 @@ function getExcerpt(content, length = 200) {
 const baseTemplate = fs.readFileSync('./templates/base.html', 'utf-8');
 const rootTemplate = fs.readFileSync('./templates/root.html', 'utf-8');
 
+// Create blog template with proper relative paths
+const blogTemplate = baseTemplate
+    .replace(/href="\//g, 'href="../')
+    .replace(/src="\//g, 'src="../');
+
 // Process markdown files
 function processMarkdown(filePath, template, content = null) {
     const fileContent = content || fs.readFileSync(filePath, 'utf-8');
@@ -155,8 +160,8 @@ function getBlogPosts() {
                 title,
                 date,
                 excerpt: getExcerpt(markdownContent),
-                file: `blog/${file.replace('.md', '.html')}`,
-                image: `assets/images/blog/${file.replace('.md', '.jpg')}`
+                file: `/blog/${file.replace('.md', '.html')}`,
+                image: `/assets/images/blog/${file.replace('.md', '.jpg')}`
             });
         }
     });
