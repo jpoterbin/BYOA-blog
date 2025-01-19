@@ -11,7 +11,7 @@ title: Blog
 
 <div class="content-section blog-content">
     <div class="blog-grid">
-  <article class="blog-preview">
+        <article class="blog-preview">
             <img src="../assets/images/blog/tree.jpg" alt="Think Like a Tree" class="blog-preview-image">
             <div class="blog-preview-content">
                 <h2><a href="tree.html">(Old Medium Post) Live Your Best Life: Think Like a Tree</a></h2>
@@ -21,21 +21,12 @@ title: Blog
             </div>
         </article>
         <article class="blog-preview">
-            <img src="../assets/images/blog/second-post.jpg" alt="My Second Blog Post" class="blog-preview-image">
+            <img src="../assets/images/blog/crucial-conversations.png" alt="Crucial Conversations" class="blog-preview-image">
             <div class="blog-preview-content">
-                <h2><a href="blog/01-11-25.html">My Second Blog Post</a></h2>
-                <time class="blog-date">January 11, 2024</time>
-                <p class="blog-excerpt">This is my second blog post. Welcome to my blog! Stay tuned for more interesting content coming soon as I share my thoughts and experiences...</p>
-                <a href="blog/01-11-25.html" class="read-more">Read More →</a>
-            </div>
-        </article>
-        <article class="blog-preview">
-            <img src="../assets/images/blog/first-post.jpg" alt="Hello World - My First Blog Post" class="blog-preview-image">
-            <div class="blog-preview-content">
-                <h2><a href="blog/hello-world.html">Hello World - My First Blog Post</a></h2>
+                <h2><a href="blog/crucial-conversations.html">Book Notes - Crucial Conversations: Tools for Talking When Stakes Are High</a></h2>
                 <time class="blog-date">January 1, 2024</time>
-                <p class="blog-excerpt">Welcome to my first blog post! I'm excited to start sharing my thoughts and experiences with you. This blog will be a place where I discuss...</p>
-                <a href="blog/hello-world.html" class="read-more">Read More →</a>
+                <p class="blog-excerpt">Why: A primary function of product managers is to listen and have conversations with customers, stakeholders, team members, executive leadership in order to get feedback, learn, improve, make sense of conflicting opinions. This book does a great job of exploring how to have those difficult conversations.</p>
+                <a href="blog/crucial-conversations.html" class="read-more">Read More →</a>
             </div>
         </article>
     </div>

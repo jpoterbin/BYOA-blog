@@ -176,34 +176,12 @@ fs.readdirSync(pagesDir).forEach(file => {
         const template = isRoot ? rootTemplate : baseTemplate;
         
         if (file === 'blog.md') {
-            // Generate blog index page with list of posts
-            const posts = getBlogPosts();
-            const blogContent = `<div class="hero">
-    <div class="hero-content">
-        <h1>Blog</h1>
-        <p>Thoughts on product, design, and life</p>
-    </div>
-</div>
-
-<div class="content-section blog-content">
-    <div class="blog-grid">
-        ${posts.map(post => `
-        <article class="blog-preview">
-            <img src="${post.image}" alt="${post.title}" class="blog-preview-image">
-            <div class="blog-preview-content">
-                <h2><a href="${post.file}">${post.title}</a></h2>
-                <time class="blog-date">${post.date}</time>
-                <p class="blog-excerpt">${post.excerpt}</p>
-                <a href="${post.file}" class="read-more">Read More →</a>
-            </div>
-        </article>`).join('')}
-    </div>
-</div>`;
-
+            // Read the blog.md content directly
+            const blogMdContent = fs.readFileSync(path.join(pagesDir, file), 'utf-8');
+            const { html } = processMarkdown(path.join(pagesDir, file), template, blogMdContent);
+            
+            // Write the processed HTML directly to blog.html
             const outputPath = path.join(publicDir, 'blog.html');
-            const html = template
-                .replace('{{title}}', 'Blog')
-                .replace('{{content}}', blogContent);
             fs.writeFileSync(outputPath, html);
         } else {
             const { html } = processMarkdown(path.join(pagesDir, file), template);
