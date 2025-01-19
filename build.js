@@ -20,6 +20,42 @@ const publicDir = './public';
 const blogDir = './content/blog';
 const blogOutputDir = path.join(publicDir, 'blog');
 
+// Function to copy directory recursively
+function copyDir(src, dest) {
+    if (!fs.existsSync(dest)) {
+        fs.mkdirSync(dest, { recursive: true });
+    }
+    
+    const entries = fs.readdirSync(src, { withFileTypes: true });
+    
+    for (let entry of entries) {
+        const srcPath = path.join(src, entry.name);
+        const destPath = path.join(dest, entry.name);
+        
+        if (entry.isDirectory()) {
+            copyDir(srcPath, destPath);
+        } else {
+            fs.copyFileSync(srcPath, destPath);
+        }
+    }
+}
+
+// Ensure directories exist and copy assets
+if (!fs.existsSync(publicDir)) {
+    fs.mkdirSync(publicDir);
+}
+if (!fs.existsSync(blogOutputDir)) {
+    fs.mkdirSync(blogOutputDir, { recursive: true });
+}
+
+// Copy assets to public directory
+if (fs.existsSync('./assets')) {
+    copyDir('./assets', path.join('.', 'assets'));
+}
+
+// Create a .nojekyll file to prevent GitHub Pages from ignoring files that start with underscores
+fs.writeFileSync('./.nojekyll', '');
+
 // Get blog post excerpt
 function getExcerpt(content, length = 200) {
     // Remove front matter
@@ -52,14 +88,6 @@ const rootTemplate = fs.readFileSync('./templates/root.html', 'utf-8');
 const blogPostTemplate = baseTemplate
     .replace('href="/assets/css/style.css"', 'href="../../assets/css/style.css"')
     .replace('src="/assets/js/main.js"', 'href="../../assets/js/main.js"');
-
-// Ensure directories exist
-if (!fs.existsSync(publicDir)) {
-    fs.mkdirSync(publicDir);
-}
-if (!fs.existsSync(blogOutputDir)) {
-    fs.mkdirSync(blogOutputDir, { recursive: true });
-}
 
 // Process markdown files
 function processMarkdown(filePath, template, content = null) {
