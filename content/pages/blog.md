@@ -29,5 +29,32 @@ title: Blog
                 <a href="blog/crucial-conversations.html" class="read-more">Read More →</a>
             </div>
         </article>
+        <article class="blog-preview">
+            <img src="../assets/images/blog/definition-of-done.jpg" alt="Definition of Done" class="blog-preview-image">
+            <div class="blog-preview-content">
+                <h2><a href="blog/definition-of-done.html">Definition of Done</a></h2>
+                <time class="blog-date">January 1, 2024</time>
+                <p class="blog-excerpt">The Definition of Done is important for all teams to agree on because it gives everyone a shared understanding of when something is complete.</p>
+                <a href="blog/definition-of-done.html" class="read-more">Read More →</a>
+            </div>
+        </article>
+        <article class="blog-preview">
+            <img src="../assets/images/blog/parents-stroke.jpg" alt="Parents Stroke" class="blog-preview-image">
+            <div class="blog-preview-content">
+                <h2><a href="blog/parents-stroke.html">The Importance of Empathy: Lessons Learned From a Parent’s Stroke</a></h2>
+                <time class="blog-date">January 1, 2024</time>
+                <p class="blog-excerpt">Two days after Christmas, I rushed into the ICU after a last-minute flight from Texas to Kansas, to face one of the scariest and most uncertain moments in my life.</p>
+                <a href="blog/parents-stroke.html" class="read-more">Read More →</a>
+            </div>
+        </article>
+        <article class="blog-preview">
+            <img src="../assets/images/blog/nouns-verbs-adjectives.jpg" alt="Nouns, Verbs, and Adjectives" class="blog-preview-image">
+            <div class="blog-preview-content">
+                <h2><a href="blog/nouns-verbs-adjectives.html">Breaking Down The Product Management Role By Verbs, Nouns and Adjectives</a></h2>
+                <time class="blog-date">January 1, 2024</time>
+                <p class="blog-excerpt">This is a post from 2015, when I first started product management. I found this framework to be helpful in getting my head around what a PM should be focused on.</p>
+                <a href="blog/nouns-verbs-adjectives.html" class="read-more">Read More →</a>
+            </div>
+        </article>
     </div>
 </div>
