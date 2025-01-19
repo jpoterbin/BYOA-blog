@@ -11,6 +11,16 @@ title: Blog
 
 <div class="content-section blog-content">
     <div class="blog-grid">
+  <article class="blog-preview">
+            <img src="../assets/images/blog/tree.jpg" alt="Think Like a Tree" class="blog-preview-image">
+            <div class="blog-preview-content">
+                <h2><a href="tree.html">(Old Medium Post) Live Your Best Life: Think Like a Tree</a></h2>
+                <time class="blog-date">January 19, 2025</time>
+                <p class="blog-excerpt">This post was originally posted on Jan. 1, 2018, on Medium. This past year has been monumental for me — many big life goals are coming to fruition which inevitably has me thinking about the next 5, 10, 20-plus years.</p>
+                <a href="blog/tree.html" class="read-more">Read More →</a>
+            </div>
+        </article>
+
         <article class="blog-preview">
             <img src="../assets/images/blog/second-post.jpg" alt="My Second Blog Post" class="blog-preview-image">
             <div class="blog-preview-content">

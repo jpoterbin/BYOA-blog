@@ -1,11 +1,18 @@
 ---
 title: Hello World - My First Blog Post
 date: 2024-01-01
+image: /images/my-image.jpg
 ---
 
-# Hello World - My First Blog Post
+# Hello World!
 
-Welcome to my first blog post! I'm excited to start sharing my thoughts and experiences with you. This blog will be a place where I discuss product development, design thinking, and lessons learned from building and scaling products.
+![My first blog post image](/images/my-image.jpg)
+
+This is my first blog post. Welcome to my blog!
+
+## What's Next?
+
+Stay tuned for more interesting content coming soon!
 
 ## Why Start a Blog?
 
