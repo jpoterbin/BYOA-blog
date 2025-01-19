@@ -133,6 +133,7 @@ body {
     border-radius: 50%;
     border: 3px solid #fff;
     margin-bottom: 1rem;
+    margin-top: 2rem; /* Add space above the profile image */
     position: relative;
     z-index: 2;
     object-fit: cover;
