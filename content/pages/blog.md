@@ -3,6 +3,7 @@ title: Blog
 ---
 
 <div class="hero">
+    <img src="/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
     <div class="hero-content">
         <h1>Blog</h1>
         <p>Thoughts on product, design, and life.</p>
@@ -41,7 +42,7 @@ title: Blog
         <article class="blog-preview">
             <img src="../assets/images/blog/parents-stroke.jpg" alt="Parents Stroke" class="blog-preview-image">
             <div class="blog-preview-content">
-                <h2><a href="blog/parents-stroke.html">The Importance of Empathy: Lessons Learned From a Parent’s Stroke</a></h2>
+                <h2><a href="blog/parents-stroke.html">The Importance of Empathy: Lessons Learned From a Parent's Stroke</a></h2>
                 <time class="blog-date">January 1, 2024</time>
                 <p class="blog-excerpt">Two days after Christmas, I rushed into the ICU after a last-minute flight from Texas to Kansas, to face one of the scariest and most uncertain moments in my life.</p>
                 <a href="blog/parents-stroke.html" class="read-more">Read More →</a>

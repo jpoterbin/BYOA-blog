@@ -4,10 +4,11 @@ template: projects
 ---
 
 <div class="hero">
-<div class="hero-content">
-<h1>Projects</h1>
-<p>Selected works and experiments</p>
-</div>
+    <img src="/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
+    <div class="hero-content">
+        <h1>Projects</h1>
+        <p>A collection of things I've built</p>
+    </div>
 </div>
 
 <div class="content-section">
