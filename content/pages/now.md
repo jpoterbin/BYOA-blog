@@ -11,10 +11,10 @@ title: What I'm Doing Now
 </div>
 
 ## Where:
-I live with my wife and our dog in Austin, TX.
+I live with my wife and our dog in Arlington, VA.
 
 ## Working On:
-I'm a product manager at Walmart. This is a 4-month contract ending in May 2022.
+I'm a product manager at Amazon working on network infrastructure automation.
 
 ## Reading & Learning:
 - This past year I subscribed to MIT Technology Review (the old-school print version), been enjoying [their podcasts](https://www.technologyreview.com/podcasts) too.
@@ -29,4 +29,4 @@ I'm a product manager at Walmart. This is a 4-month contract ending in May 2022.
 - Relived the early 2000's seeing Y'all Out Boy, Texas's premier emo cover band, Fantastic.
 - Planning a trip to Scotland for some point this year.
 
-Updated on 2/1/21 
+Updated on 1/19/2025

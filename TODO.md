@@ -1,0 +1,3 @@
+- [ ] Add a "Now" page
+- [ ] Migrate blog posts
+- [ ] Add a project
