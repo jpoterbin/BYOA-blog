@@ -3,10 +3,10 @@ title: About Me
 ---
 
 <div class="hero">
-    <img src="/assets/images/profile.png" alt="Jacob Poterbin" class="profile-image">
+    <img src="/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
     <div class="hero-content">
         <h1>About Me</h1>
-        <p>Product leader and software engineer based in Austin, TX</p>
+        <p>Product maker based in Arlington, VA</p>
     </div>
 </div>
 
