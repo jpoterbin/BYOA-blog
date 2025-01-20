@@ -10,21 +10,27 @@ title: Resume
     </div>
 </div>
 
-## Overview
-
-I thoroughly enjoy leading ideas from back-of-the-napkin to valued services. My strengths are taking full responsibility, thinking about the future, making sure each puzzle piece fits together, being empathetic and moving the day-to-day forward with organized collaboration.
-
-I strongly believe in the power of words, a good first impression and a pragmatic approach. I seek out ideas, people, and experiences that have a positive, lasting impact. I enjoy seeing multiple viewpoints to create something cohesive.
-
-My background includes product management, business management, journalism, marketing, public relations and board experience.
-
-StrengthsFinder: Learner, Futuristic, Strategic, Responsibility, Intellection
-
-Myers-Briggs: INFJ
-
-<a href="#" class="button">Download CV</a>
-
 ## Experience
+
+### Amazon
+**Technical Product Manager**  
+*April 2024 - Present*  
+DC Metro Area, United States
+
+Products related to network infrastructure automation and security.
+
+**Product Manager**  
+*July 2022 - April 2024 · 1 year 10 months*  
+Los Angeles Metropolitan Area
+
+Voice of Customer product manager for the Global Internet Infrastructure Engineering org (hardware and software). Building continuous discovery mechanisms and products that increase customer obsession of the customers we serve, including 40-plus business units and the Amazon associates around the world.
+
+### Walmart Global Tech
+**Product Manager Contractor**  
+*February 2022 - May 2022 · 4 months*  
+Austin, Texas, United States
+
+Product manager of new end-to-end journey for purchasing eSim iPhones through the in-store retail platform.
 
 ### Yonder, Austin, TX
 **Senior Product Manager, B2C Booking Platform and Native Apps**  
@@ -61,3 +67,9 @@ Myers-Briggs: INFJ
 - Conducted frequent user research through inter-views, a/b tests, surveys, field visits.
 - Orchestrated overall product positioning for both sides of marketplace.
 - Active voice in company culture and creating a productive office environment. 
+
+### About Me
+
+StrengthsFinder: Learner, Futuristic, Strategic, Responsibility, Intellection
+
+Myers-Briggs: INFJ
