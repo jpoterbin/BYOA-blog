@@ -12,6 +12,8 @@ body {
     background-color: #fff;
     width: 100%;
     overflow-x: hidden;
+    margin: 0;
+    padding: 0;
 }
 
 /* Header and Navigation */
@@ -55,6 +57,12 @@ body {
 }
 
 @media (max-width: 768px) {
+    body {
+        margin: 0;
+        padding: 0;
+        width: 100vw;
+    }
+
     .top-nav {
         flex-direction: column;
         padding: 1rem;
@@ -87,14 +95,17 @@ body {
 
     /* Content adjustments */
     main {
+        margin: 0;
         padding: 0;
         width: 100%;
+        max-width: 100%;
     }
 
     .content-section {
-        padding: 0.5rem;
         margin: 0;
+        padding: 0;
         width: 100%;
+        max-width: 100%;
     }
 
     .content-section h2 {
@@ -103,21 +114,32 @@ body {
 
     /* Blog preview adjustments */
     .blog-content {
-        padding: 0;
-        margin: 0;
         width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
     }
 
     .blog-grid {
-        gap: 1rem;
-        padding: 0;
         width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
     }
 
     .blog-preview {
         margin: 0;
         width: 100%;
+        max-width: 100%;
         border-radius: 0;
+        box-shadow: none;
+        border-bottom: 1px solid #eee;
+    }
+
+    .blog-preview:last-child {
+        border-bottom: none;
     }
 
     .blog-preview-content {
@@ -144,38 +166,54 @@ body {
     /* Project card adjustments */
     .projects-grid {
         grid-template-columns: 1fr;
-        gap: 1rem;
+        gap: 0;
         padding: 0;
         width: 100%;
+        margin: 0;
     }
 
     .project-card {
         margin: 0;
         width: 100%;
         border-radius: 0;
+        box-shadow: none;
+        border-bottom: 1px solid #eee;
     }
 
-    .project-card h3 {
-        font-size: 1.2rem;
-        padding: 1.2rem 1.2rem 0.5rem;
-    }
-
-    .project-card p {
-        padding: 0 1.2rem;
-    }
-
-    .project-link {
-        padding: 0 1.2rem 1.2rem;
+    .project-card:last-child {
+        border-bottom: none;
     }
 
     .project-image {
-        height: 200px;
+        width: 100%;
+        height: 250px;
         border-radius: 0;
+    }
+
+    .project-card h3 {
+        font-size: 1.4rem;
+        padding: 1rem;
+        margin: 0;
+    }
+
+    .project-card p {
+        padding: 0 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .project-link {
+        padding: 0 1rem 1rem;
     }
 
     /* Ensure profile image doesn't overlap with nav */
     .profile-image {
         margin-top: 4rem;
+    }
+
+    /* Remove any inherited max-width constraints */
+    .blog-post {
+        max-width: 100%;
+        padding: 1rem;
     }
 }
 
@@ -247,7 +285,7 @@ body {
     height: 120px;
     border-radius: 50%;
     border: 3px solid #fff;
-    margin: 3rem 0 1rem 0;
+    margin: 6rem 0 1rem 0;
     position: relative;
     z-index: 2;
     object-fit: cover;
@@ -265,6 +303,7 @@ main {
     max-width: 800px;
     margin: 0 auto;
     margin-top: 0;
+    width: 100%;
 }
 
 .content-section {
@@ -396,10 +435,17 @@ footer {
 /* Projects Grid */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Always show 2 columns on desktop */
+    grid-template-columns: 1fr; /* Default to single column */
     gap: 2.5rem;
     padding: 1rem 0;
     max-width: 100%;
+}
+
+/* Add two columns only on larger screens */
+@media (min-width: 769px) {
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 .project-card {
