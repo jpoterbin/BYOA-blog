@@ -72,20 +72,52 @@ body {
         font-size: 0.9rem;
     }
 
-    /* Adjust hero section padding for mobile nav */
+    /* Hero adjustments */
     .hero {
-        padding-top: 100px; /* Add more padding to account for taller nav */
+        padding-top: 100px;
     }
 
-    /* Adjust blog content for mobile */
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* Content adjustments */
+    main {
+        padding: 0;
+        width: 100%;
+    }
+
+    .content-section {
+        padding: 0.5rem;
+        margin: 0;
+        width: 100%;
+    }
+
+    .content-section h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Blog preview adjustments */
     .blog-content {
         padding: 0;
         margin: 0;
+        width: 100%;
+    }
+
+    .blog-grid {
+        gap: 1rem;
+        padding: 0;
+        width: 100%;
     }
 
     .blog-preview {
-        margin: 0 0.25rem;
-        width: auto;
+        margin: 0;
+        width: 100%;
+        border-radius: 0;
     }
 
     .blog-preview-content {
@@ -100,22 +132,50 @@ body {
         font-size: 1rem;
     }
 
+    .blog-preview-image {
+        height: 200px;
+        border-radius: 0;
+    }
+
+    .blog-preview-image-link {
+        border-radius: 0;
+    }
+
+    /* Project card adjustments */
+    .projects-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+        padding: 0;
+        width: 100%;
+    }
+
+    .project-card {
+        margin: 0;
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .project-card h3 {
+        font-size: 1.2rem;
+        padding: 1.2rem 1.2rem 0.5rem;
+    }
+
+    .project-card p {
+        padding: 0 1.2rem;
+    }
+
+    .project-link {
+        padding: 0 1.2rem 1.2rem;
+    }
+
+    .project-image {
+        height: 200px;
+        border-radius: 0;
+    }
+
     /* Ensure profile image doesn't overlap with nav */
     .profile-image {
         margin-top: 4rem;
-    }
-
-    main {
-        padding: 0;
-    }
-
-    .content-section {
-        padding: 0.5rem;
-        margin: 0;
-    }
-
-    .blog-grid {
-        gap: 1rem;
     }
 }
 
@@ -387,59 +447,6 @@ footer {
     color: #007acc;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .top-nav {
-        padding: 1rem;
-    }
-
-    .nav-right a {
-        margin-left: 1rem;
-    }
-
-    main {
-        padding: 1rem;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    .content-section {
-        padding: 1.5rem;
-    }
-
-    .content-section h2 {
-        font-size: 1.5rem;
-    }
-
-    .projects-grid {
-        grid-template-columns: 1fr; /* Stack cards on mobile */
-        gap: 1.5rem;
-    }
-
-    .project-image {
-        height: 200px;
-    }
-
-    .project-card h3 {
-        font-size: 1.2rem;
-        padding: 1.2rem 1.2rem 0.5rem;
-    }
-
-    .project-card p {
-        padding: 0 1.2rem;
-    }
-
-    .project-link {
-        padding: 0 1.2rem 1.2rem;
-    }
-}
-
 /* Resume Styles */
 .position {
     color: #666;
@@ -550,21 +557,6 @@ footer {
 .read-more:hover {
     color: #007acc;
     text-decoration: none;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-    .blog-preview-image {
-        height: 200px;
-    }
-
-    .blog-preview h2 {
-        font-size: 1.5rem;
-    }
-
-    .blog-excerpt {
-        font-size: 1rem;
-    }
 }
 
 /* Blog Post Styles */
