@@ -1,0 +1,32 @@
+{
+    "images": [
+        {
+            "path": "big-bend.jpg",
+            "caption": "Big Bend National Park, 2016"
+        },
+        {
+            "path": "scotland.jpg",
+            "caption": "Isle of Skye, Scotland, 2022"
+        },
+        {
+            "path": "grand-canyon.jpg",
+            "caption": "Grand Canyon, 2024"
+        },
+        {
+            "path": "joshua-tree.jpg",
+            "caption": "Joshua Tree, 2024"
+        },
+        {
+            "path": "kauai.jpg",
+            "caption": "Kauai, 2018"
+        },
+        {
+            "path": "sedona.jpg",
+            "caption": "Sedona, 2024"
+        },
+        {
+            "path": "grand-canyon-2.jpg",
+            "caption": "Grand Canyon, 2024"
+        }
+    ]
+} 

@@ -6,7 +6,7 @@ title: What I'm Doing Now
     <img src="/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
     <div class="hero-content">
         <h1>What I'm Doing Now</h1>
-        <p>Product maker based in Arlington, VA</p>
+        <p>Product maker based in DC Metro Area.</p>
     </div>
 </div>
 

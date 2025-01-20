@@ -7,7 +7,7 @@ template: projects
     <img src="/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
     <div class="hero-content">
         <h1>Projects</h1>
-        <p>A collection of things I've built</p>
+        <p>A collection of things I've worked on.</p>
     </div>
 </div>
 

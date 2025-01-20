@@ -2,6 +2,16 @@ const fs = require('fs');
 const path = require('path');
 const marked = require('marked');
 
+// Load hero images configuration
+const heroImages = JSON.parse(fs.readFileSync('./content/hero-images.json', 'utf-8'));
+
+// Function to get a random hero image
+function getRandomHeroImage() {
+    const images = heroImages.images;
+    const randomIndex = Math.floor(Math.random() * images.length);
+    return images[randomIndex];
+}
+
 // Configure marked options
 marked.setOptions({
     gfm: true,
@@ -123,6 +133,17 @@ function processMarkdown(filePath, template, content = null) {
         const parts = markdownContent.split('</div>\n\n');
         heroSection = parts[0] + '</div>';
         mainContent = parts.slice(1).join('</div>\n\n');
+        
+        // Replace hero background image with random one
+        const heroImage = getRandomHeroImage();
+        heroSection = heroSection.replace(
+            /background-image:\s*url\([^)]+\)/,
+            `background-image: url('../images/hero/${heroImage.path}')`
+        );
+        heroSection = heroSection.replace(
+            /<p>Photo:[^<]+<\/p>/,
+            `<p>Photo: ${heroImage.caption}</p>`
+        );
     }
     
     // Process the main content

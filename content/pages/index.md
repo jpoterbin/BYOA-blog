@@ -6,7 +6,7 @@ title: Jacob Poterbin
     <img src="assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
     <div class="hero-content">
         <h1>Jacob Poterbin</h1>
-        <p>Currently in Arlington, Virginia.</p>
+        <p>Currently in DC Metro Area.</p>
         <p>Photo: Big Bend National Park, 2016</p>
     </div>
 </div>
