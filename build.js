@@ -117,8 +117,13 @@ const rootTemplate = fs.readFileSync('./templates/root.html', 'utf-8');
 
 // Create blog template with proper relative paths
 const blogTemplate = baseTemplate
-    .replace(/href="\//g, 'href="../')
-    .replace(/src="\//g, 'src="../');
+    .replace(/href="assets/g, 'href="../assets')
+    .replace(/src="assets/g, 'src="../assets')
+    .replace(/href="index/g, 'href="../index')
+    .replace(/href="resume/g, 'href="../resume')
+    .replace(/href="projects/g, 'href="../projects')
+    .replace(/href="blog/g, 'href="../blog')
+    .replace(/href="now/g, 'href="../now');
 
 // Process markdown files
 function processMarkdown(filePath, template, content = null) {
@@ -197,7 +202,7 @@ function processMarkdown(filePath, template, content = null) {
 // Build blog posts
 fs.readdirSync(blogDir).forEach(file => {
     if (file.endsWith('.md')) {
-        const { html } = processMarkdown(path.join(blogDir, file), baseTemplate);
+        const { html } = processMarkdown(path.join(blogDir, file), blogTemplate);
         const outputPath = path.join(blogOutputDir, file.replace('.md', '.html'));
         fs.writeFileSync(outputPath, html);
     }

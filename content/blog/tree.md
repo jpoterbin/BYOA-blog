@@ -4,9 +4,9 @@ date: 2024-01-11
 image: /assets/images/blog/tree.jpg
 ---
 
-# Live Your Best Life: Think Like a Tree
-
 <img src="/assets/images/blog/tree.jpg" alt="Think Like a Tree" class="blog-image">
+
+# Live Your Best Life: Think Like a Tree
 
 This post was originally posted on Jan. 1, 2018, on Medium.
 
