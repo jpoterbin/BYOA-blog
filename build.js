@@ -227,7 +227,7 @@ function getBlogPosts() {
                 title,
                 date,
                 excerpt: getExcerpt(markdownContent),
-                file: `/blog/${file.replace('.md', '.html')}`,
+                file: `${file.replace('.md', '.html')}`,
                 image: `/${imagePath}`
             });
         }
@@ -256,12 +256,14 @@ fs.readdirSync(pagesDir).forEach(file => {
                 `</div>\n</div>\n\n<div class="content-section blog-content">\n<div class="blog-grid">${
                     posts.map(post => `
                     <article class="blog-preview">
-                        <img src="${post.image}" alt="${post.title}" class="blog-preview-image">
+                        <a href="blog/${post.file}" class="blog-preview-image-link">
+                            <img src="${post.image}" alt="${post.title}" class="blog-preview-image">
+                        </a>
                         <div class="blog-preview-content">
-                            <h2><a href="${post.file}">${post.title}</a></h2>
+                            <h2><a href="blog/${post.file}">${post.title}</a></h2>
                             <time class="blog-date">${post.date}</time>
                             <p class="blog-excerpt">${post.excerpt}</p>
-                            <a href="${post.file}" class="read-more">Read More →</a>
+                            <a href="blog/${post.file}" class="read-more">Read More →</a>
                         </div>
                     </article>`).join('')
                 }</div>`
