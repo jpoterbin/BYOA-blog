@@ -62,47 +62,49 @@ body {
         margin: 0;
         padding: 0;
         width: 100%;
-        max-width: 100%;
-        overflow-x: hidden;
+        max-width: none;
     }
 
     main {
         margin: 0;
         padding: 0;
         width: 100%;
-        max-width: 100%;
+        max-width: none;
     }
 
     .content-section {
         margin: 0;
         padding: 0;
         width: 100%;
-        max-width: 100%;
+        max-width: none;
     }
 
     /* Blog specific containers */
     .blog-content {
         width: 100%;
-        max-width: 100%;
+        max-width: none;
         margin: 0;
         padding: 0;
     }
 
     .blog-grid {
         width: 100%;
-        max-width: 100%;
+        max-width: none;
         margin: 0;
         padding: 0;
         gap: 0;
+        display: flex;
+        flex-direction: column;
     }
 
     .blog-preview {
         width: 100%;
-        max-width: 100%;
+        max-width: none;
         margin: 0;
         padding: 0;
         border-radius: 0;
         box-shadow: none;
+        border-bottom: 1px solid #eee;
     }
 
     .blog-preview-content {
@@ -116,9 +118,8 @@ body {
 
     .top-nav {
         flex-direction: column;
-        padding: 1rem;
+        padding: 0.75rem;
         gap: 0.5rem;
-        height: auto;
     }
     
     .nav-links {
@@ -150,7 +151,7 @@ body {
     .blog-preview {
         margin: 0;
         width: 100%;
-        max-width: 100%;
+        max-width: none;
         border-radius: 0;
         box-shadow: none;
         border-bottom: 1px solid #eee;
@@ -213,12 +214,12 @@ body {
 
     /* Ensure profile image doesn't overlap with nav */
     .profile-image {
-        margin-top: 4rem;
+        margin-top: 8rem;
     }
 
     /* Remove any inherited max-width constraints */
     .blog-post {
-        max-width: 100%;
+        max-width: none;
         padding: 1rem;
     }
 }
@@ -306,17 +307,31 @@ body {
 /* Main Content */
 main {
     padding: 0;
-    max-width: 800px;
+    width: 100%;
     margin: 0 auto;
     margin-top: 0;
-    width: 100%;
 }
 
 .content-section {
     background: #fff;
     padding: 2rem;
+    margin: 0 auto;
     margin-bottom: 2rem;
-    max-width: 100%;
+    width: 100%;
+}
+
+/* Desktop styles */
+@media (min-width: 769px) {
+    .content-section {
+        max-width: 800px;
+        padding: 2rem;
+    }
+
+    /* Keep blog and projects grid full width */
+    .content-section.blog-content,
+    .content-section.projects-content {
+        max-width: none;
+    }
 }
 
 /* When there's no hero, add padding for the fixed nav */
