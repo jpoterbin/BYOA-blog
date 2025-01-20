@@ -83,11 +83,12 @@ body {
     }
 
     .blog-preview {
-        margin: 0 1rem;
+        margin: 0 0.5rem;
+        width: auto;
     }
 
     .blog-preview-content {
-        padding: 1.2rem;
+        padding: 1rem;
     }
 
     .blog-preview h2 {
@@ -101,6 +102,14 @@ body {
     /* Ensure profile image doesn't overlap with nav */
     .profile-image {
         margin-top: 4rem;
+    }
+
+    main {
+        padding: 0;
+    }
+
+    .content-section {
+        padding: 1rem;
     }
 }
 
