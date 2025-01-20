@@ -137,13 +137,17 @@ function processMarkdown(filePath, template, content = null) {
         // Replace hero background image with random one
         const heroImage = getRandomHeroImage();
         heroSection = heroSection.replace(
-            /background-image:\s*url\([^)]+\)/,
-            `background-image: url('../images/hero/${heroImage.path}')`
+            /style="[^"]*"/,
+            `style="background-image: url('/assets/images/hero/${heroImage.path}')"`
         );
-        heroSection = heroSection.replace(
-            /<p>Photo:[^<]+<\/p>/,
-            `<p>Photo: ${heroImage.caption}</p>`
-        );
+        
+        // Replace the photo caption if it exists
+        if (heroSection.includes('<p>Photo:')) {
+            heroSection = heroSection.replace(
+                /<p>Photo:.*?<\/p>/,
+                `<p>Photo: ${heroImage.caption}</p>`
+            );
+        }
     }
     
     // Process the main content
@@ -205,34 +209,16 @@ fs.readdirSync(pagesDir).forEach(file => {
         if (file === 'blog.md') {
             // Generate blog index page with list of posts
             const posts = getBlogPosts();
-            const blogContent = `<div class="hero">
-    <img src="/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
-    <div class="hero-content">
-        <h1>Blog</h1>
-        <p>Thoughts on product, design, and life.</p>
-    </div>
-</div>
-
-<div class="content-section blog-content">
-    <div class="blog-grid">
-        ${posts.map(post => `
-        <article class="blog-preview">
-            <img src="${post.image}" alt="${post.title}" class="blog-preview-image">
-            <div class="blog-preview-content">
-                <h2><a href="${post.file}">${post.title}</a></h2>
-                <time class="blog-date">${post.date}</time>
-                <p class="blog-excerpt">${post.excerpt}</p>
-                <a href="${post.file}" class="read-more">Read More →</a>
-            </div>
-        </article>`).join('')}
-    </div>
-</div>`;
-
+            const { content: pageContent } = processMarkdown(path.join(pagesDir, file), '');
+            
+            // Process the page content first to handle the hero section
+            const { html: processedHtml } = processMarkdown(path.join(pagesDir, file), template, pageContent);
+            
+            // Add the blog grid after the hero section
+            const blogContent = processedHtml.replace('</div>\n</div>\n\n<div class="content-section">', '</div>\n</div>\n\n<div class="content-section blog-content">\n<div class="blog-grid">');
+            
             const outputPath = path.join(publicDir, 'blog.html');
-            const html = template
-                .replace('{{title}}', 'Blog')
-                .replace('{{content}}', blogContent);
-            fs.writeFileSync(outputPath, html);
+            fs.writeFileSync(outputPath, blogContent);
         } else {
             const { html } = processMarkdown(path.join(pagesDir, file), template);
             const outputPath = path.join(publicDir, file.replace('.md', '.html'));

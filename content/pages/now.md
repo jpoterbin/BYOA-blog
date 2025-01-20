@@ -2,11 +2,12 @@
 title: What I'm Doing Now
 ---
 
-<div class="hero">
+<div class="hero" style="background-image: url('/assets/images/hero/big-bend.jpg')">
     <img src="/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
     <div class="hero-content">
         <h1>What I'm Doing Now</h1>
         <p>Product maker based in DC Metro Area.</p>
+        <p class="photo-caption">Photo: Big Bend National Park, 2016</p>
     </div>
 </div>
 

@@ -2,11 +2,12 @@
 title: Blog
 ---
 
-<div class="hero">
+<div class="hero" style="background-image: url('/assets/images/hero/big-bend.jpg')">
     <img src="/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
     <div class="hero-content">
         <h1>Blog</h1>
         <p>Thoughts on building products, emerging technologies, and life.</p>
+        <p class="photo-caption">Photo: Big Bend National Park, 2016</p>
     </div>
 </div>
 
