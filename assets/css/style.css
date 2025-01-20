@@ -284,9 +284,10 @@ footer {
 /* Projects Grid */
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(2, 1fr); /* Always show 2 columns on desktop */
+    gap: 2.5rem;
     padding: 1rem 0;
+    max-width: 100%;
 }
 
 .project-card {
@@ -304,26 +305,26 @@ footer {
 
 .project-image {
     width: 100%;
-    height: 200px;
+    height: 266px; /* Increased by 33% from 200px */
     object-fit: cover;
 }
 
 .project-card h3 {
-    padding: 1.2rem 1.2rem 0.5rem;
-    font-size: 1.4rem;
+    padding: 1.6rem 1.6rem 0.7rem; /* Increased by 33% */
+    font-size: 1.6rem; /* Increased from 1.4rem */
     color: #333;
 }
 
 .project-card p {
-    padding: 0 1.2rem;
+    padding: 0 1.6rem; /* Increased by 33% */
     color: #666;
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    font-size: 1.1rem;
+    margin-bottom: 1.3rem; /* Increased by 33% */
 }
 
 .project-link {
     display: inline-block;
-    padding: 0 1.2rem 1.2rem;
+    padding: 0 1.6rem 1.6rem; /* Increased by 33% */
     color: #0096ff;
     text-decoration: none;
     font-weight: 500;
@@ -365,12 +366,25 @@ footer {
     }
 
     .projects-grid {
-        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        grid-template-columns: 1fr; /* Stack cards on mobile */
         gap: 1.5rem;
+    }
+
+    .project-image {
+        height: 200px;
     }
 
     .project-card h3 {
         font-size: 1.2rem;
+        padding: 1.2rem 1.2rem 0.5rem;
+    }
+
+    .project-card p {
+        padding: 0 1.2rem;
+    }
+
+    .project-link {
+        padding: 0 1.2rem 1.2rem;
     }
 }
 

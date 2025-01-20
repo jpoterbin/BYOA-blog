@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 200">
+  <!-- Background -->
+  <rect width="320" height="200" fill="#f8f9fa" rx="12"/>
+  
+  <!-- Tomato Watercolor Effect -->
+  <!-- Base layer -->
+  <circle cx="160" cy="100" r="55" fill="#ffebee" opacity="0.6"/>
+  <circle cx="165" cy="95" r="52" fill="#ffcdd2" opacity="0.5"/>
+  <circle cx="155" cy="105" r="50" fill="#ef9a9a" opacity="0.4"/>
+  
+  <!-- Main tomato shape -->
+  <path d="M160 60 
+           C200 60, 220 90, 220 120
+           C220 150, 190 160, 160 160
+           C130 160, 100 150, 100 120
+           C100 90, 120 60, 160 60" 
+        fill="#e53935" opacity="0.8"/>
+  
+  <!-- Highlights -->
+  <path d="M140 70 
+           C160 65, 180 70, 190 85
+           C195 95, 185 100, 175 95
+           C165 90, 150 85, 140 70" 
+        fill="#ff8a80" opacity="0.4"/>
+  
+  <!-- Stem and Leaf -->
+  <path d="M160 65 
+           C160 55, 170 50, 180 55
+           C160 45, 145 60, 160 65" 
+        fill="#81c784" opacity="0.9"/>
+  <path d="M165 60 
+           C175 55, 185 45, 190 50
+           C195 55, 185 65, 175 62" 
+        fill="#81c784" opacity="0.7"/>
+</svg>
