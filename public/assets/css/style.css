@@ -20,17 +20,14 @@ body {
     top: 0;
     left: 0;
     right: 0;
-    background: #1a1a1a;
-    z-index: 1000;
-}
-
-.nav-content {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 1rem 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 1rem 2rem;
+    background-color: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    z-index: 1000;
+    margin: 0;
 }
 
 .nav-title {
@@ -43,7 +40,7 @@ body {
 .nav-links {
     display: flex;
     gap: 2rem;
-    margin-left: auto;
+    align-items: center;
 }
 
 .nav-links a {
@@ -58,15 +55,15 @@ body {
 }
 
 @media (max-width: 768px) {
-    .nav-content {
+    .top-nav {
         flex-direction: column;
         padding: 1rem;
         gap: 1rem;
     }
     
     .nav-links {
-        margin-left: 0;
         gap: 1rem;
+        justify-content: center;
     }
 }
 
@@ -138,8 +135,7 @@ body {
     height: 120px;
     border-radius: 50%;
     border: 3px solid #fff;
-    margin-bottom: 1rem;
-    margin-top: 2rem; /* Add space above the profile image */
+    margin: 3rem 0 1rem 0;
     position: relative;
     z-index: 2;
     object-fit: cover;
@@ -237,17 +233,21 @@ footer {
 
 .social-links {
     margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
 }
 
 .social-icon {
-    margin: 0 1rem;
     color: #666;
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.3s ease, transform 0.3s ease;
+    font-size: 1.5rem;
 }
 
 .social-icon:hover {
-    color: #0096ff;
+    color: #4A90E2;
+    transform: translateY(-2px);
 }
 
 .copyright {

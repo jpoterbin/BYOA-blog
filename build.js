@@ -12,6 +12,28 @@ function getRandomHeroImage() {
     return images[randomIndex];
 }
 
+// Replace the random hero image function with a page-specific one
+function getHeroImageForPage(pageName) {
+    const pageImages = {
+        'index': 'kauai.jpg',
+        'resume': 'grand-canyon.jpg',
+        'projects': 'joshua-tree.jpg',
+        'now': 'scotland.jpg',
+        'blog': 'big-bend.jpg' // default for blog
+    };
+    
+    const imagePath = pageImages[pageName] || 'big-bend.jpg';
+    const imageCaption = {
+        'kauai.jpg': 'Kauai, 2018',
+        'grand-canyon.jpg': 'Grand Canyon, 2024',
+        'joshua-tree.jpg': 'Joshua Tree National Park, 2024',
+        'scotland.jpg': 'Isle of Skye, Scotland, 2022',
+        'big-bend.jpg': 'Big Bend National Park, 2016'
+    }[imagePath];
+    
+    return { path: imagePath, caption: imageCaption };
+}
+
 // Configure marked options
 marked.setOptions({
     gfm: true,
@@ -134,19 +156,20 @@ function processMarkdown(filePath, template, content = null) {
         heroSection = parts[0] + '</div>';
         mainContent = parts.slice(1).join('</div>\n\n');
         
-        // Replace hero background image with random one
-        const heroImage = getRandomHeroImage();
+        // Get the page-specific hero image
+        const pageName = path.basename(filePath, '.md');
+        const heroImage = getHeroImageForPage(pageName);
         
         // First, ensure we have a div with the hero class and style attribute
         heroSection = heroSection.replace(
             '<div class="hero"',
-            '<div class="hero" style="background-image: url(\'/assets/images/hero/' + heroImage.path + '\')"'
+            `<div class="hero" style="background-image: url('/assets/images/hero/${heroImage.path}')"`,
         );
         
         // Then replace any existing style attribute
         heroSection = heroSection.replace(
             /style="[^"]*background-image:\s*url\([^)]+\)[^"]*"/,
-            'style="background-image: url(\'/assets/images/hero/' + heroImage.path + '\')"'
+            `style="background-image: url('/assets/images/hero/${heroImage.path}')"`
         );
         
         // Replace the photo caption if it exists
