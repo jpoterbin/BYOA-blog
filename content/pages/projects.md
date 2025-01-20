@@ -3,7 +3,7 @@ title: Projects
 template: projects
 ---
 
-<div class="hero" style="background-image: url('/assets/images/hero/big-bend.jpg')">
+<div class="hero">
     <img src="/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
     <div class="hero-content">
         <h1>Projects</h1>

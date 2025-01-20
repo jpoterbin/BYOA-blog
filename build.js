@@ -129,23 +129,31 @@ function processMarkdown(filePath, template, content = null) {
     let heroSection = '';
     let mainContent = markdownContent;
     
-    if (markdownContent.includes('<div class="hero">')) {
+    if (markdownContent.includes('<div class="hero"')) {
         const parts = markdownContent.split('</div>\n\n');
         heroSection = parts[0] + '</div>';
         mainContent = parts.slice(1).join('</div>\n\n');
         
         // Replace hero background image with random one
         const heroImage = getRandomHeroImage();
+        
+        // First, ensure we have a div with the hero class and style attribute
         heroSection = heroSection.replace(
-            /style="[^"]*"/,
-            `style="background-image: url('/assets/images/hero/${heroImage.path}')"`
+            '<div class="hero"',
+            '<div class="hero" style="background-image: url(\'/assets/images/hero/' + heroImage.path + '\')"'
+        );
+        
+        // Then replace any existing style attribute
+        heroSection = heroSection.replace(
+            /style="[^"]*background-image:\s*url\([^)]+\)[^"]*"/,
+            'style="background-image: url(\'/assets/images/hero/' + heroImage.path + '\')"'
         );
         
         // Replace the photo caption if it exists
-        if (heroSection.includes('<p>Photo:')) {
+        if (heroSection.includes('class="photo-caption"')) {
             heroSection = heroSection.replace(
-                /<p>Photo:.*?<\/p>/,
-                `<p>Photo: ${heroImage.caption}</p>`
+                /<p class="photo-caption">Photo:.*?<\/p>/,
+                `<p class="photo-caption">Photo: ${heroImage.caption}</p>`
             );
         }
     }
@@ -215,7 +223,21 @@ fs.readdirSync(pagesDir).forEach(file => {
             const { html: processedHtml } = processMarkdown(path.join(pagesDir, file), template, pageContent);
             
             // Add the blog grid after the hero section
-            const blogContent = processedHtml.replace('</div>\n</div>\n\n<div class="content-section">', '</div>\n</div>\n\n<div class="content-section blog-content">\n<div class="blog-grid">');
+            const blogContent = processedHtml.replace(
+                '</div>\n</div>\n\n<div class="content-section">',
+                `</div>\n</div>\n\n<div class="content-section blog-content">\n<div class="blog-grid">${
+                    posts.map(post => `
+                    <article class="blog-preview">
+                        <img src="${post.image}" alt="${post.title}" class="blog-preview-image">
+                        <div class="blog-preview-content">
+                            <h2><a href="${post.file}">${post.title}</a></h2>
+                            <time class="blog-date">${post.date}</time>
+                            <p class="blog-excerpt">${post.excerpt}</p>
+                            <a href="${post.file}" class="read-more">Read More →</a>
+                        </div>
+                    </article>`).join('')
+                }</div>`
+            );
             
             const outputPath = path.join(publicDir, 'blog.html');
             fs.writeFileSync(outputPath, blogContent);
