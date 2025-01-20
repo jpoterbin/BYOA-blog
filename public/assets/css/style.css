@@ -57,10 +57,61 @@ body {
 }
 
 @media (max-width: 768px) {
+    /* Base container adjustments */
     body {
         margin: 0;
         padding: 0;
-        width: 100vw;
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden;
+    }
+
+    main {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .content-section {
+        margin: 0;
+        padding: 0;
+        width: 100%;
+        max-width: 100%;
+    }
+
+    /* Blog specific containers */
+    .blog-content {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .blog-grid {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        gap: 0;
+    }
+
+    .blog-preview {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+        box-shadow: none;
+    }
+
+    .blog-preview-content {
+        padding: 1rem;
+    }
+
+    .blog-preview-image {
+        width: 100%;
+        border-radius: 0;
     }
 
     .top-nav {
@@ -81,31 +132,14 @@ body {
     }
 
     /* Hero adjustments */
-    .hero {
-        padding-top: 100px;
+    .hero h1, .hero-content h1 {
+        font-size: 2rem !important;
+        margin-bottom: 0.5rem;
     }
 
-    .hero h1 {
-        font-size: 2rem;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    /* Content adjustments */
-    main {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .content-section {
-        margin: 0;
-        padding: 0;
-        width: 100%;
-        max-width: 100%;
+    .hero p, .hero-content p {
+        font-size: 1rem !important;
+        margin-bottom: 0.5rem;
     }
 
     .content-section h2 {
@@ -113,22 +147,6 @@ body {
     }
 
     /* Blog preview adjustments */
-    .blog-content {
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: 0;
-    }
-
-    .blog-grid {
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: 0;
-        display: flex;
-        flex-direction: column;
-    }
-
     .blog-preview {
         margin: 0;
         width: 100%;
@@ -140,18 +158,6 @@ body {
 
     .blog-preview:last-child {
         border-bottom: none;
-    }
-
-    .blog-preview-content {
-        padding: 1rem;
-    }
-
-    .blog-preview h2 {
-        font-size: 1.4rem;
-    }
-
-    .blog-excerpt {
-        font-size: 1rem;
     }
 
     .blog-preview-image {
@@ -512,10 +518,6 @@ footer {
 }
 
 /* Blog Styles */
-.blog-content {
-    padding-top: 2rem;
-}
-
 .blog-grid {
     display: flex;
     flex-direction: column;
