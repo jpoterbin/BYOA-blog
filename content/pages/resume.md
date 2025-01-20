@@ -13,20 +13,20 @@ title: Resume
 ## Experience
 
 ### Amazon
-**Technical Product Manager**  
+**Technical Product Manager, Internal B2B Enterprise**  
 *April 2024 - Present*  
 DC Metro Area, United States
 
 Products related to network infrastructure automation and security.
 
-**Product Manager**  
+**Product Manager, Voice of Customer**  
 *July 2022 - April 2024 · 1 year 10 months*  
 Los Angeles Metropolitan Area
 
 Voice of Customer product manager for the Global Internet Infrastructure Engineering org (hardware and software). Building continuous discovery mechanisms and products that increase customer obsession of the customers we serve, including 40-plus business units and the Amazon associates around the world.
 
 ### Walmart Global Tech
-**Product Manager Contractor**  
+**Product Manager Contractor, B2C Retail Purchase Experience**  
 *February 2022 - May 2022 · 4 months*  
 Austin, Texas, United States
 
