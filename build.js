@@ -185,6 +185,7 @@ fs.readdirSync(pagesDir).forEach(file => {
             // Generate blog index page with list of posts
             const posts = getBlogPosts();
             const blogContent = `<div class="hero">
+    <img src="/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
     <div class="hero-content">
         <h1>Blog</h1>
         <p>Thoughts on product, design, and life.</p>

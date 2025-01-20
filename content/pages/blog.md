@@ -6,7 +6,7 @@ title: Blog
     <img src="/assets/images/profile.jpeg" alt="Jacob Poterbin" class="profile-image">
     <div class="hero-content">
         <h1>Blog</h1>
-        <p>Thoughts on product, design, and life.</p>
+        <p>Thoughts on building products, emerging technologies, and life.</p>
     </div>
 </div>
 
