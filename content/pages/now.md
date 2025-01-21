@@ -15,19 +15,22 @@ title: What I'm Doing Now
 I live with my wife and our dog in Arlington, VA.
 
 ## Working On:
-I'm a product manager at Amazon working on network infrastructure automation.
+I'm a product manager at Amazon working on network infrastructure automation and volunteering with the HQ2 sustainbility group.
 
 ## Reading & Learning:
-- This past year I subscribed to MIT Technology Review (the old-school print version), been enjoying [their podcasts](https://www.technologyreview.com/podcasts) too.
-- [GoPractice.io](https://gopractice.io) - an online learning course for data-driven product management.
+- Currently reading [Every.to](https://every.to) which is more than just a blog and podcast, it's a media company startup making AI products. Super fun to be part of the community.
+- <a href="https://buildyourownapps.ai">Build Your Own Apps</a> - a course on building apps with Cursor. I built this personal website and blog from one of the units using html, css, javascript, and node.js.
 
-## Listening to:
-- Podcast: [Below the Line](https://belowtheline.com) - casual but in-depth conversations with creators.
-- Album: [The Bonny](https://open.spotify.com/album/6OujNhvGQhJfDfcKLKLe7Y) by Gerry Cinnamon
+## Listening or Watching:
+- TV: The Americans. TV series about spies in the 1980's.
+- Album: [This is the Sea](https://open.spotify.com/album/0LoiHiWrQr7b0a4wlYVqSh?si=SQ-mYrhOSUKRhLLN74pR6Q) by The Waterboys.
+
+## Recently Favorite Things:
+- <a href="https://mecha.so/comet">Mecha Comet</a>: A unix-based modular mobile computer that was announced at CES 2025. Now that I'm writing much more code with Cursor, I'm more interested in personalizing my own tech.
+- <a href="https://en.wikipedia.org/wiki/Canon_AE-1">Canon AE1</a> film camera: I've been shooting film for the first time in years, thanks to a Christmas gift from my brother.
 
 ## For Fun:
-- Recently got together with friends for cocktails and playing Family Feud online -- had a blast. Apparently this is what fun looks like in your 30's.
-- Relived the early 2000's seeing Y'all Out Boy, Texas's premier emo cover band, Fantastic.
-- Planning a trip to Scotland for some point this year.
+- Planning a trip to Shenandoah National Park in the spring for hiking and cabin relaxatiion.
+- Saw some standup comedey at the DC Improv at the beginning of the year. <a href="https://petelee.net">Pete Lee</a> was one of the memorable acts.
 
 Updated on 1/19/2025
