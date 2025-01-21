@@ -31,6 +31,6 @@ I'm a product manager at Amazon working on network infrastructure automation and
 
 ## For Fun:
 - Planning a trip to <a href="https://www.nps.gov/shen/index.htm" target="_blank">Shenandoah National Park</a> in the spring for hiking and cabin relaxatiion.
-- Saw some standup comedey at the DC Improv at the beginning of the year. <a href="https://petelee.net" target="_blank">Pete Lee</a> was one of the memorable acts.
+- Saw some standup comedy at the DC Improv at the beginning of the year. <a href="https://petelee.net" target="_blank">Pete Lee</a> was one of the memorable acts.
 
 Updated on 1/19/2025
