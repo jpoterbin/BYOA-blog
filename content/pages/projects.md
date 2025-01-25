@@ -15,7 +15,7 @@ template: projects
 <div class="content-section">
 <div class="projects-grid">
 <div class="project-card">
-<img src="../assets/images/habit-watercolor.svg" alt="Habit Tracker" class="project-image">
+<img src="../assets/images/habit-tracker.svg" alt="Habit Tracker" class="project-image">
 <h3>Habit Tracker</h3>
 <p>A simple habit tracker built with React and Tailwind CSS.</p>
 <a href="https://jpoterbin-habit-tracker.netlify.app" class="project-link" target="_blank">View Project →</a>
