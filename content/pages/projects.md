@@ -17,8 +17,8 @@ template: projects
 <div class="project-card">
 <img src="../assets/images/habit-watercolor.svg" alt="Habit Tracker" class="project-image">
 <h3>Habit Tracker</h3>
-<p>A simple habit tracker built with HTML, CSS, and JavaScript.</p>
-<a href="https://jpoterbin.github.io/BYOA-habit-tracker/" class="project-link" target="_blank">View Project →</a>
+<p>A simple habit tracker built with React and Tailwind CSS.</p>
+<a href="https://jpoterbin-habit-tracker.netlify.app" class="project-link" target="_blank">View Project →</a>
 </div>
 <div class="project-card">
 <img src="../assets/images/pomodoro-watercolor.svg" alt="Pomodoro Timer" class="project-image">
